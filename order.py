@@ -4,17 +4,17 @@ class Order:
 # __init__ is used as a constructor which creates an empty order object.
 
 # -------------
-    def add_item(self, drink):
-        self.__items.append(drink) # This is used to add drinks into the Order.
-
     def get_items(self):
         return self.__items # This will return the list of drinks in the order.
+    
+    def add_item(self, drink):
+        self.__items.append(drink) # This is used to add drinks into the Order.
 # -------------
 
     def get_total(self):
         total = sum(drink.price for drink in self.__items)
         return total
-    # This will calculate and sum up the drink prices.
+    # This will calculate and sum up the drink prices
 
     def get_num_items(self):
         num_items = len(self.__items)
@@ -29,6 +29,8 @@ class Order:
     def remove_item(Self, index):
         if 0 <= index < len(self.__items):
             self.__items.pop(index)
+        else:
+            raise IndexError("Invalid, can't be removed.")
     # Removes items from the order using index.
 
     def __str__(self):
