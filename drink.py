@@ -14,27 +14,27 @@ class Drink:
         "large": 2.05,
         "mega": 2.50,
     }
-# List of bases and flavors for the drinks.
 
-    def __init__(self, base, price, size): # This is the constructor for the Drink class.
+    def __init__(self, base, price, size): 
         if base not in Drink.valid_bases:
             raise ValueError("Invalid.")
-        self.__base = base # Sets the drink base.
-        self.__flavors = [] # Creates an empty list for flavors, hence the empty brackets '[]'.
-        self.price = price # Sets the price for drinks.
+        self.__base = base 
+        self.__flavors = []
+        self.price = price
         self._size = None
         self._cost = 0.0
         self.set_size(size)
 
     def get_flavors(self):
         return list(self.__flavors)
-    # Returns get_flavors, or the list of flavors.
 
     def get_num_flavors(self):
         return len(self.__flavors)
-    # Returns the number of flavors in the drink.
 
-    def get_base(self, base):
+    def get_base(self):
+        return self.__base
+
+    def set_base(self, base):
         if base in Drink.valid_bases:
             self._base = base
         else:
@@ -51,7 +51,6 @@ class Drink:
                 self.__flavors.append(flavor)
         else:
             raise ValueError("Invalid flavor, pick a flavor from {self._valid_flavors}")
-    # This whole method will add flavors to the drinks instead, and will raise a Value error if invalid.
 
     def set_flavors(self, flavors): 
         new_flavors = set(flavors) - set(self.__flavors)
@@ -60,7 +59,6 @@ class Drink:
             if flavor not in Drink.valid_flavors:
                 raise ValueError("Invalid flavor, pick a flavor from {self._valid_flavors}")
         self.__flavors = list(set(flavors))
-    # This whole method will set the flavors for the drinks, and will raise a Value error if invalid.
 
     def set_size(self, size):
         size = size.lower()
